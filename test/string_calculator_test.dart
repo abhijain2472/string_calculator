@@ -23,5 +23,8 @@ void main() {
     test('should handle new lines between numbers', () {
       expect(calculator.add("1\n2,3"), 6);
     });
+    test('should support single-character custom delimiters', () {
+      expect(calculator.add("//;\n1;2"), 3);
+    });
   });
 }
