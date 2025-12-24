@@ -17,10 +17,10 @@ The following requirements have been implemented following the **Red-Green-Refac
 Below are the snapshots of the current implementation and the test suite:
 
 ### Core Logic
-<img src="assets/images/code.png" alt="code"/>
+<img src="images/code.png" alt="code"/>
 
 ### Test Suite Execution
-<img src="assets/images/test.png" alt="test"/>
+<img src="images/test.png" alt="test"/>
 
 ## 🛠 Project Structure
 
