@@ -12,7 +12,15 @@ The following requirements have been implemented following the **Red-Green-Refac
 4.  **Custom Delimiters**: Supports single-character custom delimiters defined at the start of the string (e.g., `"//;\n1;2"` returns `3`).
 5.  **Negative Number Validation**: Throws an exception if negative numbers are provided, listing all negative numbers in the error message.
 
----
+## 📸 Implementation Preview
+
+Below are the snapshots of the current implementation and the test suite:
+
+### Core Logic
+<img src="assets/images/code.png" alt="code"/>
+
+### Test Suite Execution
+<img src="assets/images/test.png" alt="test"/>
 
 ## 🛠 Project Structure
 
@@ -22,12 +30,4 @@ lib/
 test/
  └── string_calculator_test.dart # Unit tests for all steps
 
-## 📸 Implementation Preview
 
-Below are the snapshots of the current implementation and the test suite:
-
-### Core Logic
-![Code Implementation](images/code.png)
-
-### Test Suite Execution
-![Test Results](images/test.png)
