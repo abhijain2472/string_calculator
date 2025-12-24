@@ -15,7 +15,10 @@ void main() {
       expect(calculator.add("1"), 1);
     });
     test('should return the sum of two numbers', () {
-      expect(calculator.add("1,5"), equals(6));
+      expect(calculator.add("1,5"), 6);
+    });
+    test('should handle an unknown amount of numbers', () {
+      expect(calculator.add("1,2,3"), 6);
     });
   });
 }
