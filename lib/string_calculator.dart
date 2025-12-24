@@ -10,6 +10,24 @@ class StringCalculator{
       numbersPart = number.substring(newLineIndex + 1);
     }
     final parts = numbersPart.split(delimiterPattern);
-    return parts.map(int.parse).fold(0, (sum,current)=>sum+current);
+    final negatives = <int>[];
+    int sum = 0;
+
+    for (final part in parts) {
+      final value = int.parse(part);
+      if (value < 0) {
+        negatives.add(value);
+      } else {
+        sum += value;
+      }
+    }
+
+    if (negatives.isNotEmpty) {
+      throw Exception(
+        'negative numbers not allowed: ${negatives.join(',')}',
+      );
+    }
+
+    return sum;
   }
 }
