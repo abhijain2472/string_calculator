@@ -1,0 +1,15 @@
+import 'package:string_calculator/string_calculator.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  late StringCalculator calculator;
+  setUp(() {
+    calculator = StringCalculator();
+  });
+
+  group('StringCalculator.add()', () {
+    test('should return 0 for an empty string', () {
+      expect(calculator.add(""), 0);
+    });
+  });
+}
