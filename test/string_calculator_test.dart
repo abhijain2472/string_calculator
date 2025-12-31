@@ -34,5 +34,8 @@ void main() {
         )),
       );
     });
+    test('should perform multiplication if delimiter is *',(){
+      expect(calculator.add('//*\n1*2'), 2);
+    });
   });
 }

@@ -1,26 +1,21 @@
 class StringCalculator {
   int add(String number) {
-    String numbersPart = number;
-    Pattern delimiterPattern = RegExp(',|\n');
-    if (number.isEmpty) return 0;
-    if (numbersPart.startsWith('//')) {
-      final newLineIndex = number.indexOf('\n');
-      if (newLineIndex != -1) {
-        final delimiter = number.substring(2, newLineIndex);
-        delimiterPattern = RegExp(RegExp.escape(delimiter));
-        numbersPart = number.substring(newLineIndex + 1);
-      }
-    }
-    final parts = numbersPart.split(delimiterPattern);
+    final delimiterPattern = _buildDelimiterPattern(number);
+    final numberParts = _parseNumberParts(number);
+    final parts = _parseNumbers(numberParts, delimiterPattern);
+    bool isMultiplication = delimiterPattern == RegExp(RegExp.escape('*'));
     final negatives = <int>[];
-    int sum = 0;
+    int total = isMultiplication ? 1 : 0;
 
-    for (final part in parts) {
-      final value = int.tryParse(part) ?? 0;
+    for (final value in parts) {
       if (value < 0) {
         negatives.add(value);
       } else {
-        sum += value;
+        if (isMultiplication) {
+          total *= value;
+        } else {
+          total += value;
+        }
       }
     }
 
@@ -30,6 +25,27 @@ class StringCalculator {
       );
     }
 
-    return sum;
+    return total;
+  }
+
+  Pattern _buildDelimiterPattern(String number) {
+    if (!number.startsWith('//')) return RegExp(',|\n');
+    final newLineIndex = number.indexOf('\n');
+    if (newLineIndex != -1) {
+      final delimiter = number.substring(2, newLineIndex);
+      return RegExp(RegExp.escape(delimiter));
+    }
+    return RegExp(',|\n');
+  }
+
+  String _parseNumberParts(String number) {
+    if (number.startsWith('//')) {
+      return number.substring(number.indexOf('\n') + 1);
+    }
+    return number;
+  }
+
+  List<int> _parseNumbers(String number, Pattern delimiter) {
+    return number.split(delimiter).map((n) => int.tryParse(n) ?? 0).toList();
   }
 }
